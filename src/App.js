@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
+import api from './api/axiosConfig.js';
+import {useState,useEffect} from 'react';
+import Layout from './components/layout.js';
+import {Routes,Route} from 'react-router-dom';
+import Home from './components/home/Home.js';
 
 function App() {
+  const [recipes,setRecipes] = useState();
+  const getRecipes = async() =>{
+    try{
+      const response = await api.get("api/v1/recipes");
+      console.log(response.data);
+      setRecipes(response.data);
+    }catch(err){
+      console.log(err);
+    }
+    
+  }
+  useEffect(() => {
+    getRecipes();
+  },[]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {console.log(recipes.length)}
+      <Routes>
+        <Route path="/" element={<Layout/>}></Route>
+        <Route path="/" element={<Home recipes={recipes}/>}></Route>
+      </Routes>
     </div>
   );
 }

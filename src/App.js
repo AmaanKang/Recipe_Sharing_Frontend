@@ -7,7 +7,7 @@ import {Routes,Route,Link} from 'react-router-dom';
 import Home from './components/home/Home.js';
 
 function App() {
-  const [recipes,setRecipes] = useState();
+  const [recipes,setRecipes] = useState([]);
   const getRecipes = async() =>{
     try{
       const response = await api.get("api/v1/recipes");

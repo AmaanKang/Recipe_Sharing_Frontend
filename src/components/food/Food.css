@@ -1,0 +1,21 @@
+.recipe-carousel-container{
+    width: 100vw;
+    background-color: black;
+    color:white;
+}
+.recipe-image{
+    height:300px;
+    width:50%;
+    margin-left:25%;
+}
+.recipe-image > img{
+    height: 100%;
+    width:100%;
+}
+.recipe-card-container{
+    background-color:black;
+    color:white;
+}
+.recipe-card{
+    
+}

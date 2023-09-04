@@ -20,6 +20,9 @@ const Food = ({recipes}) => {
                                             <div className='recipe-title'>
                                                 <h4>{recipe.title}</h4>
                                             </div>
+                                            <div className='recipe-ingredients'>
+                                                <h4>{recipe.ingredients}</h4>
+                                            </div>
                                             <div className='recipe-instructions'>
                                                 <h4>{recipe.instructions}</h4>
                                             </div>

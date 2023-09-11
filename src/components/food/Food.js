@@ -3,7 +3,6 @@ import Carousel from 'react-material-ui-carousel';
 import {Paper} from '@mui/material';
 import './Food.css';
 import { useNavigate } from 'react-router-dom';
-import Reviews from '../reviews/Reviews';
 import Button from 'react-bootstrap/Button';
 
 const Food = ({recipes}) => {

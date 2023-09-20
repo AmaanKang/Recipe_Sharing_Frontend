@@ -1,12 +1,12 @@
 .recipe-carousel-container{
-    width: 100vw;
+    width: 100%;
     background-color: black;
     color:white;
 }
 .recipe-image{
     height:300px;
-    width:50%;
-    margin-left:25%;
+    width:300px;
+    margin-left:30%;
 }
 .recipe-image > img{
     height: 100%;

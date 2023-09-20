@@ -53,9 +53,12 @@ const Reviews = ({getRecipeData,recipe,reviews,setReviews}) => {
                     reviews?.map((r) => {
                         return(
                             <div key={r.id}>
-                            <Row>
-                                <Col>{r.body}</Col>
-                            </Row>
+                                <Row>
+                                    <Col>{r.body}</Col>
+                                </Row>
+                                <Row>
+                                    <Col></Col>
+                                </Row>
                             </div>
                         )
                     })

@@ -3,9 +3,12 @@ import React from 'react';
 
 const Layout = () => {
     return (
-        <main>
-            <Outlet/>
-        </main>
+        <div>
+            <main>
+                <Outlet/>
+            </main>
+        </div>
+        
     )
 }
 export default Layout;

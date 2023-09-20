@@ -23,7 +23,6 @@ function App() {
     }catch(err){
       console.log(err);
     }
-    
   }
 
   const getRecipeData = async(recipeId) =>{
@@ -34,20 +33,20 @@ function App() {
       setReviews(singleRecipe.reviewIds);
 
     }catch(error){
-
+      console.log(error);
     }
   }
 
   useEffect(() => {
     getRecipes();
   },[]);
+
   return (
     <div className="App">
       <Header/>
-      <Link to="/home">Home</Link>
+      <Layout/>
       <Routes>
-        <Route path="/" element={<Layout/>}>Layout</Route>
-        <Route path="/home" element={<Home recipes={recipes}/>}>Home</Route>
+        <Route path="/" element={<Home recipes={recipes}/>}>Home</Route>
         <Route path="/Reviews/:recipeId" element={<Reviews getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews} />}>Reviews</Route>
       </Routes>
     </div>

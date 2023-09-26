@@ -4,10 +4,8 @@ import {useParams} from 'react-router-dom';
 import {Container,Row,Col} from 'react-bootstrap';
 import ReviewForm from '../reviewForm/ReviewForm';
 
-const Reviews = ({getRecipeData,recipe,reviews,setReviews}) => {
+const Reviews = ({getRecipeData,recipe,reviews,setReviews,recipeId}) => {
     const revText = useRef();
-    const params = useParams();
-    const recipeId = params.recipeId;
     
     const addReview = async(e) => {
         e.preventDefault();
@@ -20,7 +18,6 @@ const Reviews = ({getRecipeData,recipe,reviews,setReviews}) => {
             rev.value = "";
             setReviews(updatedReviews);
         }catch(err){
-
         }
     }
 
@@ -33,7 +30,6 @@ const Reviews = ({getRecipeData,recipe,reviews,setReviews}) => {
                 <Col><h3>Reviews</h3></Col>
             </Row>
             <Row className="mt-2">
-                <Col><img src={('../../Food_Images/'+recipe?.image_Name+'.jpg')} /></Col>
                 <Col>
                 {
                     <>

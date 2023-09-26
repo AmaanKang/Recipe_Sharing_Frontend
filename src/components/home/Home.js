@@ -1,10 +1,10 @@
 import React from 'react';
 import Food from '../food/Food.js';
 
-const Home = ({recipes}) => {
+const Home = ({recipes,getRecipeData,recipe,reviews,setReviews,recipeId}) => {
     return (
     <div>
-        <Food recipes = {recipes} />
+        <Food recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>
     </div>
     )
 }

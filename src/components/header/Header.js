@@ -22,7 +22,7 @@ const Header = () => {
                     navbarScroll
                     >
                         <NavLink className="nav-link" to="/">All recipes</NavLink>
-                        <NavLink className="nav-link" to="/add">Add new recipe</NavLink>
+                        <NavLink className="nav-link" to="/add-new-recipe">Add new recipe</NavLink>
                         <NavLink className="nav-link" to="/contact">Contact</NavLink>
                     </Nav>
                     <Button variant="outline-info" className="me-2" >Login</Button>

@@ -5,31 +5,29 @@ import './Food.css';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import {Tab,Tabs,TabList,TabPanel} from 'react-tabs';
+import Reviews from '../reviews/Reviews';
 
-const Food = ({recipes}) => {
 
-    const navigate = useNavigate();
-    function reviews(recipeId){
-        navigate(`/Reviews/${recipeId}`);
-    }
+const Food = ({recipes,getRecipeData,recipe,reviews,setReviews,recipeId}) => {
+    const currentRecipe = recipe;
 
     return (
         <div className='recipe-carousel-container'>
-            <Carousel>
+            <Carousel autoPlay={false} height={700} indicators={false} navButtonsAlwaysVisible={true}>
                 {
                     recipes.map((recipe) => {
                         return(
-                            <Paper key={recipe.id}>
+                            <div key={recipe.id}>
                                 <div className='recipe-card-container'>
                                     <div className='recipe-card'>
+                                        <div className='recipe-image'>
+                                            <img src={require('../../Food_Images/'+recipe.image_Name+'.jpg')} />
+                                        </div>
+                                        <div className='recipe-title'>
+                                            <h4>{recipe.title}</h4>
+                                        </div>
                                         <div className='recipe-detail'>
-                                            <div className='recipe-image'>
-                                                <img src={require('../../Food_Images/'+recipe.image_Name+'.jpg')} />
-                                            </div>
-                                            <div className='recipe-title'>
-                                                <h4>{recipe.title}</h4>
-                                            </div>
-                                            <Tabs>
+                                            <Tabs  defaultIndex={0}>
                                                 <TabList>
                                                 <Tab>Ingredients</Tab>
                                                 <Tab>Recipe Instructions</Tab>
@@ -38,7 +36,9 @@ const Food = ({recipes}) => {
 
                                                 <TabPanel>
                                                     <div className='recipe-ingredients'>
-                                                        <p>{recipe.ingredients}</p>
+                                                        <ul>
+                                                            {recipe.ingredients}
+                                                        </ul>
                                                     </div>
                                                 </TabPanel>
                                                 <TabPanel>
@@ -48,14 +48,14 @@ const Food = ({recipes}) => {
                                                 </TabPanel>
                                                 <TabPanel>
                                                     <div className="movie-review-button-container">
-                                                        <Button variant="info" onClick={() => reviews(recipe.id)}>Reviews</Button>
+                                                        <Reviews getRecipeData={getRecipeData} recipe={currentRecipe} reviews={reviews} setReviews={setReviews} recipeId={recipe.id} />
                                                     </div>
                                                 </TabPanel>
                                             </Tabs>
                                         </div>
                                     </div>
                                 </div>
-                            </Paper>
+                            </div>
                         )
                     })
                 }

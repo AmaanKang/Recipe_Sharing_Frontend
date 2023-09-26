@@ -7,6 +7,7 @@ import {Routes,Route,Link} from 'react-router-dom';
 import Home from './components/home/Home.js';
 import Header from './components/header/Header';
 import Reviews from './components/reviews/Reviews';
+import AddNewRecipe from './components/addNewRecipe/AddNewRecipe';
 
 function App() {
 
@@ -44,13 +45,14 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Layout/>
+      
       <Routes>
-        <Route path="/" element={<Home recipes={recipes}/>}>Home</Route>
-        <Route path="/Reviews/:recipeId" element={<Reviews getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews} />}>Reviews</Route>
+        <Route path="/" element={<Home recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>}>Home</Route>
+        <Route path="/add-new-recipe" element={<AddNewRecipe/>}>Add New recipe</Route>
       </Routes>
     </div>
   );
 }
-
+//Reviews/:recipeId
+//<Route path="/" element={<Reviews getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews} />}>Reviews</Route>
 export default App;

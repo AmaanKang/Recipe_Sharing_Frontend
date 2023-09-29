@@ -46,6 +46,9 @@ const Reviews = ({getRecipeData,recipe,reviews,setReviews,recipeId}) => {
                     </>
                 }
                 {
+                    console.log(reviews)
+                }
+                {
                     reviews?.map((r) => {
                         return(
                             <div key={r.id}>

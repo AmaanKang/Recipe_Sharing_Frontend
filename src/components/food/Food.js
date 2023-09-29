@@ -8,12 +8,12 @@ import {Tab,Tabs,TabList,TabPanel} from 'react-tabs';
 import Reviews from '../reviews/Reviews';
 
 
-const Food = ({recipes,getRecipeData,recipe,reviews,setReviews,recipeId}) => {
+const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
     const currentRecipe = recipe;
 
     return (
         <div className='recipe-carousel-container'>
-            <Carousel autoPlay={false} height={700} indicators={false} navButtonsAlwaysVisible={true}>
+            <Carousel autoPlay={false} height={800} indicators={false} navButtonsAlwaysVisible={true}>
                 {
                     recipes.map((recipe) => {
                         return(

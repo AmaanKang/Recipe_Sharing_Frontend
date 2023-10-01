@@ -4,6 +4,7 @@ import {Form,Button} from 'react-bootstrap';
 import api from '../../api/axiosConfig';
 import {useParams} from 'react-router-dom';
 import './AddNewRecipe.css';
+import uploadApi from '../../api/axiosFileUpload';
 
 const AddNewRecipe = () => {
     const [selectedFile,setSelectedFile] = useState(null);
@@ -34,15 +35,19 @@ const AddNewRecipe = () => {
 
     const submitRecipe = async(e) => {
         e.preventDefault();
-        console.log(_title);
-        console.log(_ingredients);
-        console.log(_instructions);
-        console.log(_image_Name);
         try{
-            const response = await api.post("api/v1/recipes",{title:_title,ingredients:_ingredients,instructions:_instructions,image_Name:_image_Name});
+            const response = await api.post("api/v1/recipes",{title:_title,ingredients:_ingredients,instructions:_instructions,image_Name:selectedFile.name.substring(0,selectedFile.name.length-4)});
             console.log(response.data);
             //const updatedRecipes = [...recipes,{body:rev.value}];
             //setReviews(updatedReviews);
+            const formData = new FormData();
+            formData.append(
+                "file",
+                selectedFile,
+                selectedFile.name
+            );
+            console.log(selectedFile.name.substring(0,selectedFile.name.length-4));
+            uploadApi.post("/upload", formData);
         }catch(err){
         }
     }
@@ -52,27 +57,22 @@ const AddNewRecipe = () => {
             <Form>
                 <Form.Group>
                 <Form.Label>Title of the recipe:</Form.Label>
-                <Form.Control type="text" onChange={ontitleChange}/>
+                <Form.Control type="text" onChange={ontitleChange} required/>
                 </Form.Group>
 
                 <Form.Group>
                 <Form.Label>Write down each ingredient of the recipe. Please note that After adding one ingredient, move to the secobd line to add another:</Form.Label>
-                <Form.Control type="textarea" rows={3} onChange={oningredientsChange} />
+                <Form.Control type="textarea" rows={3} onChange={oningredientsChange} required/>
                 </Form.Group>
 
                 <Form.Group>
                 <Form.Label>Instructions:</Form.Label>
-                <Form.Control type="text" onChange={oninstructionsChange}/>
-                </Form.Group>
-
-                <Form.Group>
-                <Form.Label>Write down the image's name that you are going to upload:</Form.Label>
-                <Form.Control type="text" onChange={onimageChange} />
+                <Form.Control type="text" onChange={oninstructionsChange} required/>
                 </Form.Group>
 
                 <Form.Group>
                 <Form.Label>Upload recipe picture:</Form.Label>
-                <Form.Control type="file" onChange={onFileChange}/>
+                <Form.Control type="file" onChange={onFileChange} required />
                 </Form.Group>
 
                 <Form.Group>

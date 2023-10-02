@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import {Paper} from '@mui/material';
 import './Food.css';
 import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import {Tab,Tabs,TabList,TabPanel} from 'react-tabs';
 import Reviews from '../reviews/Reviews';
+import {Form,Button} from 'react-bootstrap';
 
 
 const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
     const currentRecipe = recipe;
+    const [searchTerm,setSearchTerm] = useState("");
+
+    const onTermChange = (e) => {
+        setSearchTerm(e.target.value);
+    }
 
     return (
         <div className='recipe-carousel-container'>
+            <Form>
+                <Form.Group>
+                    <Form.Label>Search for a recipe by its title:</Form.Label>
+                    <Form.Control type="text" onChange={onTermChange} value={searchTerm}/>
+                </Form.Group>
+            </Form>
             <Carousel autoPlay={false} height={800} indicators={false} navButtonsAlwaysVisible={true}>
                 {
-                    recipes.map((recipe) => {
+                    
+                    recipes.filter((r) => {
+                        return r.title.toLowerCase().includes(searchTerm.toLowerCase());
+                    }).
+                    map((recipe) => {
                         return(
                             <div key={recipe.id}>
                                 <div className='recipe-card-container'>

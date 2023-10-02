@@ -11,7 +11,7 @@ const AddNewRecipe = () => {
     const [_title,set_title] = useState("");
     const [_ingredients,set_ingredients] = useState("");
     const [_instructions,set_instructions] = useState("");
-    const [_image_Name,set_image_Name] = useState("");
+    const [message,setMessage] = useState("");
 
     const onFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -29,25 +29,25 @@ const AddNewRecipe = () => {
         set_instructions(e.target.value);
     }
 
-    const onimageChange = (e) => {
-        set_image_Name(e.target.value);
-    }
-
     const submitRecipe = async(e) => {
         e.preventDefault();
         try{
             const response = await api.post("api/v1/recipes",{title:_title,ingredients:_ingredients,instructions:_instructions,image_Name:selectedFile.name.substring(0,selectedFile.name.length-4)});
             console.log(response.data);
-            //const updatedRecipes = [...recipes,{body:rev.value}];
-            //setReviews(updatedReviews);
-            const formData = new FormData();
+            const formData = new FormData(); 
             formData.append(
                 "file",
                 selectedFile,
                 selectedFile.name
             );
-            console.log(selectedFile.name.substring(0,selectedFile.name.length-4));
-            uploadApi.post("/upload", formData);
+            const response2 = uploadApi.post("/upload", formData);
+            if(response.data != null && response2.data != null){
+                //selectedFile = null;
+                _title = "";
+                _ingredients = "";
+                _instructions = "";
+                setMessage("The recipe has been uploaded successfully! You can search for it under All Recipes page.");
+            }
         }catch(err){
         }
     }
@@ -57,22 +57,22 @@ const AddNewRecipe = () => {
             <Form>
                 <Form.Group>
                 <Form.Label>Title of the recipe:</Form.Label>
-                <Form.Control type="text" onChange={ontitleChange} required/>
+                <Form.Control type="text" onChange={ontitleChange} value={_title} required/>
                 </Form.Group>
 
                 <Form.Group>
                 <Form.Label>Write down each ingredient of the recipe. Please note that After adding one ingredient, move to the secobd line to add another:</Form.Label>
-                <Form.Control type="textarea" rows={3} onChange={oningredientsChange} required/>
+                <Form.Control type="textarea" rows={3} onChange={oningredientsChange} value={_ingredients} required/>
                 </Form.Group>
 
                 <Form.Group>
                 <Form.Label>Instructions:</Form.Label>
-                <Form.Control type="text" onChange={oninstructionsChange} required/>
+                <Form.Control type="text" onChange={oninstructionsChange} value={_instructions} required/>
                 </Form.Group>
 
                 <Form.Group>
-                <Form.Label>Upload recipe picture:</Form.Label>
-                <Form.Control type="file" onChange={onFileChange} required />
+                <Form.Label>Upload recipe picture (The file type should be jpg):</Form.Label>
+                <Form.Control type="file" onChange={onFileChange} ref={selectedFile} required />
                 </Form.Group>
 
                 <Form.Group>
@@ -80,6 +80,7 @@ const AddNewRecipe = () => {
                 </Form.Group>
                 
         </Form>
+        <p>{message}</p>
         </div>
     )
 }

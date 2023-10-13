@@ -8,9 +8,11 @@ import Home from './components/home/Home.js';
 import Header from './components/header/Header';
 import Reviews from './components/reviews/Reviews';
 import AddNewRecipe from './components/addNewRecipe/AddNewRecipe';
+import Login from './components/login/Login';
+import RegisterForm from './components/register/Register';
 
 function App() {
-
+  const [token, setToken] = useState();
 
   const [recipes,setRecipes] = useState([]);
   const [recipe,setRecipe] = useState();
@@ -42,6 +44,10 @@ function App() {
     getRecipes();
   },[]);
 
+  if(!token) {
+    <Route path="/register" element={<RegisterForm/>}>Register</Route>
+    return <Login setToken={setToken} />
+  }
   return (
     <div className="App">
       <Header/>

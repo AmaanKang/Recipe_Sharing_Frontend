@@ -1,5 +1,11 @@
+/**
+ * @Reference https://www.geeksforgeeks.org/how-to-develop-user-registration-form-in-reactjs/
+ */
+
 import { useState } from 'react';
- 
+import api from '../../api/axiosConfig';
+import { useNavigate } from 'react-router-dom';
+
 export default function RegisterForm() {
  
     const [email, setEmail] = useState('');
@@ -22,13 +28,16 @@ export default function RegisterForm() {
     };
  
     // Handling the form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         if (email === '' || password === '') {
             setError(true);
         } else {
+            const response = await api.post('api/v1/users',{emailAddress:email,password:password});
+            //const navigate = useNavigate();
             setSubmitted(true);
             setError(false);
+            //navigate(to="/");
         }
     };
  

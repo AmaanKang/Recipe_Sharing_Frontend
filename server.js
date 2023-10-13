@@ -5,10 +5,9 @@ const app = express();
 const port = 4000;
 
 app.use(cors());
-// Create a storage engine for multer
+
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    // Set the destination folder where uploaded files will be saved
     callback(null, 'src/Food_Images/');
   },
   filename: (req, file, callback) => {

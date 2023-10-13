@@ -25,8 +25,7 @@ const Header = () => {
                         <NavLink className="nav-link" to="/add-new-recipe">Add new recipe</NavLink>
                         <NavLink className="nav-link" to="/contact">Contact</NavLink>
                     </Nav>
-                    <Button variant="outline-info" className="me-2" >Login</Button>
-                    <Button variant="outline-info" className="me-2" >Register</Button>
+                    <NavLink className="nav-link" to="/">User name</NavLink>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -9,7 +9,7 @@ import Header from './components/header/Header';
 import Reviews from './components/reviews/Reviews';
 import AddNewRecipe from './components/addNewRecipe/AddNewRecipe';
 import Login from './components/login/Login';
-import RegisterForm from './components/register/Register';
+import Register from './components/register/Register';
 
 function App() {
   const [token, setToken] = useState();
@@ -45,7 +45,7 @@ function App() {
   },[]);
 
   if(!token) {
-    <Route path="/register" element={<RegisterForm/>}>Register</Route>
+    <Route path="/register" element={<Register />}>Register</Route>
     return <Login setToken={setToken} />
   }
   return (

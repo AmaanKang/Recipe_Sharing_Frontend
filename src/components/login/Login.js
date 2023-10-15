@@ -6,6 +6,8 @@ import React,{ useState } from 'react';
 import './Login.css';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import api from '../../api/axiosConfig';
+
 
 async function loginUser(credentials) {
     /**
@@ -17,7 +19,8 @@ async function loginUser(credentials) {
       },
       body: JSON.stringify(credentials)
     })
-      .then(data => data.json())
+
+      .then(dak+ta => data.json())
       */
    }
 
@@ -28,13 +31,17 @@ export default function Login({ setToken }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
+    const response = await api.post('api/v1/users',{
+      emailAddress:username,
+      password:password
     });
-    setToken(token);
+    if(response == 1){
+      setToken(true);
+    }else{
+      setToken(false);
+    }
+    
   }
-
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>
@@ -50,6 +57,7 @@ export default function Login({ setToken }) {
         <div>
           <button type="submit">Submit</button>
         </div>
+        
       </form>
       <p>
         New user? <Link to='/register'>Register here</Link>

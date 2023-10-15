@@ -13,31 +13,31 @@ export default function Register() {
     const [password, setPassword] = useState('');
  
     // States for checking the errors
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState(false);
+    //const [submitted, setSubmitted] = useState(false);
+    //const [error, setError] = useState(false);
  
     // Handling the email change
     const handleEmail = (e) => {
         setEmail(e.target.value);
-        setSubmitted(false);
+        //setSubmitted(false);
     };
  
     // Handling the password change
     const handlePassword = (e) => {
         setPassword(e.target.value);
-        setSubmitted(false);
+        //setSubmitted(false);
     };
  
     // Handling the form submission
     const handleSubmit = async(e) => {
         e.preventDefault();
         if (email === '' || password === '') {
-            setError(true);
+            //setError(true);
         } else {
             const response = await api.post('api/v1/users',{emailAddress:email,password:password});
             //const navigate = useNavigate();
-            setSubmitted(true);
-            setError(false);
+            //setSubmitted(true);
+            //setError(false);
             //navigate(to="/");
         }
     };
@@ -50,9 +50,9 @@ export default function Register() {
             <div
                 className="success"
                 style={{
-                    display: submitted ? '' : 'none',
+                    //display: submitted ? '' : 'none',
                 }}>
-                <h1>User {email} successfully registered!!</h1>
+                <h3>User {email} successfully registered!!</h3>
                 <p>
                     Go back to <Link to='/login'>Login Page here</Link>
                 </p>
@@ -66,9 +66,9 @@ export default function Register() {
             <div
                 className="error"
                 style={{
-                    display: error ? '' : 'none',
+                    //display: error ? '' : 'none',
                 }}>
-                <h1>Please enter all the fields</h1>
+                <h3>Please enter all the fields</h3>
             </div>
         );
     };
@@ -81,8 +81,8 @@ export default function Register() {
  
             {/* Calling to the methods */}
             <div className="messages">
-                {errorMessage()}
-                {successMessage()}
+                {/*errorMessage()*/}
+                {/*successMessage()*/}
             </div>
  
             <form>

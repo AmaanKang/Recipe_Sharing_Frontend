@@ -12,7 +12,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(false);
   const [recipes,setRecipes] = useState([]);
   const [recipe,setRecipe] = useState();
   const [reviews,setReviews] = useState([]);

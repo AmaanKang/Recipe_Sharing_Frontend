@@ -10,6 +10,7 @@ import Reviews from './components/reviews/Reviews';
 import AddNewRecipe from './components/addNewRecipe/AddNewRecipe';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Contacts from './components/contacts/Contacts';
 
 function App() {
   const [token, setToken] = useState(false);
@@ -61,6 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>}>Home</Route>
           <Route path="/add-new-recipe" element={<AddNewRecipe/>}>Add New recipe</Route>
+          <Route path="/contact" element={<Contacts/>}>Contact</Route>
         </Routes>
       </div>
     );

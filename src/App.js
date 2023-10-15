@@ -13,7 +13,6 @@ import Register from './components/register/Register';
 
 function App() {
   const [token, setToken] = useState();
-
   const [recipes,setRecipes] = useState([]);
   const [recipe,setRecipe] = useState();
   const [reviews,setReviews] = useState([]);
@@ -45,19 +44,28 @@ function App() {
   },[]);
 
   if(!token) {
-    <Route path="/register" element={<Register />}>Register</Route>
-    return <Login setToken={setToken} />
+    return(
+      <div className="App">
+          <Routes>
+            <Route path="/register" element={<Register />}>Register</Route>
+            <Route path="/" element={<Login setToken={token} />}>Login</Route>
+            <Route path="/login" element={<Login setToken={token} />}>Login</Route>
+          </Routes>
+      </div>
+    );
+  }else{
+    return (
+      <div className="App">
+        <Header/>
+        
+        <Routes>
+          <Route path="/" element={<Home recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>}>Home</Route>
+          <Route path="/add-new-recipe" element={<AddNewRecipe/>}>Add New recipe</Route>
+        </Routes>
+      </div>
+    );
   }
-  return (
-    <div className="App">
-      <Header/>
-      
-      <Routes>
-        <Route path="/" element={<Home recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>}>Home</Route>
-        <Route path="/add-new-recipe" element={<AddNewRecipe/>}>Add New recipe</Route>
-      </Routes>
-    </div>
-  );
+  
 }
 //Reviews/:recipeId
 //<Route path="/" element={<Reviews getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews} />}>Reviews</Route>

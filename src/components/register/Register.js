@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import api from '../../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export default function Register() {
  
@@ -43,6 +44,8 @@ export default function Register() {
  
     // Showing success message
     const successMessage = () => {
+        setEmail('');
+        setPassword('');
         return (
             <div
                 className="success"
@@ -50,6 +53,9 @@ export default function Register() {
                     display: submitted ? '' : 'none',
                 }}>
                 <h1>User {email} successfully registered!!</h1>
+                <p>
+                    Go back to <Link to='/login'>Login Page here</Link>
+                </p>
             </div>
         );
     };

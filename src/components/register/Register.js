@@ -6,6 +6,7 @@ import { useState } from 'react';
 import api from '../../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import {Button} from 'react-bootstrap';
 
 export default function Register() {
  
@@ -15,6 +16,7 @@ export default function Register() {
     // States for checking the errors
     //const [submitted, setSubmitted] = useState(false);
     //const [error, setError] = useState(false);
+    const [message,setMessage] = useState("");
  
     // Handling the email change
     const handleEmail = (e) => {
@@ -33,8 +35,17 @@ export default function Register() {
         e.preventDefault();
         if (email === '' || password === '') {
             //setError(true);
+            setMessage("Email and password fields are required!");
         } else {
             const response = await api.post('api/v1/users',{emailAddress:email,password:password});
+            console.log(response.data);
+            if(response.data == 1){
+                setEmail('');
+                setPassword('');
+                setMessage("Account created!");
+            }else{
+                setMessage("An error occured, Please try again!");
+            }
             //const navigate = useNavigate();
             //setSubmitted(true);
             //setError(false);
@@ -53,9 +64,7 @@ export default function Register() {
                     //display: submitted ? '' : 'none',
                 }}>
                 <h3>User {email} successfully registered!!</h3>
-                <p>
-                    Go back to <Link to='/login'>Login Page here</Link>
-                </p>
+                
             </div>
         );
     };
@@ -81,8 +90,7 @@ export default function Register() {
  
             {/* Calling to the methods */}
             <div className="messages">
-                {/*errorMessage()*/}
-                {/*successMessage()*/}
+                <h3>{message}</h3>
             </div>
  
             <form>
@@ -91,15 +99,17 @@ export default function Register() {
                 <label className="label">Email</label>
                 <input onChange={handleEmail} className="input"
                     value={email} type="email" />
- 
+                <br/>
                 <label className="label">Password</label>
                 <input onChange={handlePassword} className="input"
                     value={password} type="password" />
  
-                <button onClick={handleSubmit} className="btn"
-                        type="submit">
-                    Submit
-                </button>
+                <div>
+                    <Button variant="info" onClick={handleSubmit}>Submit</Button>
+                </div>
+                <p>
+                    Go back to <Link to='/login'>Login Page here</Link>
+                </p>
             </form>
         </div>
     );

@@ -7,7 +7,7 @@ import './Login.css';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import api from '../../api/axiosConfig';
-
+import {Button} from 'react-bootstrap';
 
 async function loginUser(credentials) {
     /**
@@ -31,11 +31,11 @@ export default function Login({ setToken }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const response = await api.post('api/v1/users',{
+    const response = await api.post('api/v1/login',{
       emailAddress:username,
       password:password
     });
-    if(response == 1){
+    if(response.data == 1){
       setToken(true);
     }else{
       setToken(false);
@@ -50,14 +50,15 @@ export default function Login({ setToken }) {
           <p>Username</p>
           <input type="text" onChange={e => setUserName(e.target.value)} />
         </label>
+        <br/>
         <label>
           <p>Password</p>
           <input type="password" onChange={e => setPassword(e.target.value)} />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <Button variant="info" onClick={handleSubmit}>Submit</Button>
         </div>
-        
+
       </form>
       <p>
         New user? <Link to='/register'>Register here</Link>

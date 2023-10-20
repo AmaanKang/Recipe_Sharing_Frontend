@@ -28,6 +28,7 @@ export default function Login({ setToken }) {
 
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  const [message, setMessage] = useState();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -36,24 +37,28 @@ export default function Login({ setToken }) {
       password:password
     });
     if(response.data == 1){
+      setUserName('');
+      setPassword('');
       setToken(true);
     }else{
       setToken(false);
+      setMessage("Login failed!");
     }
     
   }
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>
+      <h3>{message}</h3>
       <form onSubmit={handleSubmit} >
         <label>
           <p>Username</p>
-          <input type="text" onChange={e => setUserName(e.target.value)} />
+          <input type="text" onChange={e => setUserName(e.target.value)} value={username}/>
         </label>
         <br/>
         <label>
           <p>Password</p>
-          <input type="password" onChange={e => setPassword(e.target.value)} />
+          <input type="password" onChange={e => setPassword(e.target.value)} value={password}/>
         </label>
         <div>
           <Button variant="info" onClick={handleSubmit}>Submit</Button>

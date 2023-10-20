@@ -48,8 +48,8 @@ function App() {
       <div className="App">
           <Routes>
             <Route path="/register" element={<Register />}>Register</Route>
-            <Route path="/" element={<Login setToken={token} />}>Login</Route>
-            <Route path="/login" element={<Login setToken={token} />}>Login</Route>
+            <Route path="/" element={<Login setToken={setToken} />}>Login</Route>
+            <Route path="/login" element={<Login setToken={setToken} />}>Login</Route>
           </Routes>
       </div>
     );

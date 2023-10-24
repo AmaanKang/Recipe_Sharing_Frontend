@@ -10,12 +10,14 @@ import Reviews from './components/reviews/Reviews';
 import AddNewRecipe from './components/addNewRecipe/AddNewRecipe';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Contacts from './components/contacts/Contacts';
 
 function App() {
   const [token, setToken] = useState(false);
   const [recipes,setRecipes] = useState([]);
   const [recipe,setRecipe] = useState();
   const [reviews,setReviews] = useState([]);
+  const [username,setUserName] = useState("");
 
   const getRecipes = async() =>{
     try{
@@ -48,15 +50,15 @@ function App() {
       <div className="App">
           <Routes>
             <Route path="/register" element={<Register />}>Register</Route>
-            <Route path="/" element={<Login setToken={setToken} />}>Login</Route>
-            <Route path="/login" element={<Login setToken={setToken} />}>Login</Route>
+            <Route path="/" element={<Login setToken={setToken} setName={setUserName}/>}>Login</Route>
+            <Route path="/login" element={<Login setToken={setToken} setName={setUserName}/>}>Login</Route>
           </Routes>
       </div>
     );
   }else{
     return (
       <div className="App">
-        <Header/>
+        <Header userName={username}/>
         
         <Routes>
           <Route path="/" element={<Home recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>}>Home</Route>

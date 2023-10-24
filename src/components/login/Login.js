@@ -24,11 +24,11 @@ async function loginUser(credentials) {
       */
    }
 
-export default function Login({ setToken }) {
+export default function Login({ setToken,setName }) {
 
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
-  const [message, setMessage] = useState();
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -37,6 +37,7 @@ export default function Login({ setToken }) {
       password:password
     });
     if(response.data == 1){
+      setName(username);
       setUserName('');
       setPassword('');
       setToken(true);

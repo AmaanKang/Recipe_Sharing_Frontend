@@ -7,7 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = ({userName}) => {
     return(
         <Navbar bg="dark" variant="dark" expand="lg"> 
             <Container fluid>
@@ -25,7 +25,7 @@ const Header = () => {
                         <NavLink className="nav-link" to="/add-new-recipe">Add new recipe</NavLink>
                         <NavLink className="nav-link" to="/contact">Contact</NavLink>
                     </Nav>
-                    <NavLink className="nav-link" to="/">User name</NavLink>
+                    <NavLink className="nav-link" to="/">{userName}</NavLink>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

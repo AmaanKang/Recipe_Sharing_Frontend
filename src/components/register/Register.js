@@ -7,6 +7,7 @@ import api from '../../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
+import './Register.css';
 
 export default function Register() {
  
@@ -96,17 +97,24 @@ export default function Register() {
             <form>
                 {/* Labels and inputs for form data */}
  
-                <label className="label">Email</label>
+                <label className="label">
+                    <p>Email</p>
                 <input onChange={handleEmail} className="input"
                     value={email} type="email" />
+                </label>
                 <br/>
-                <label className="label">Password</label>
+                <br/>
+                <label className="label">
+                    <p>Password</p>
                 <input onChange={handlePassword} className="input"
                     value={password} type="password" />
- 
+                </label>
+                <br/>
+                <br/>
                 <div>
                     <Button variant="info" onClick={handleSubmit}>Submit</Button>
                 </div>
+                <br/>
                 <p>
                     Go back to <Link to='/login'>Login Page here</Link>
                 </p>

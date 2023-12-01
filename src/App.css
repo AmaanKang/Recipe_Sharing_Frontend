@@ -2,6 +2,7 @@
 *{
   box-sizing: border-box;
   font-family: 'Quicksand',Arial, Helvetica, sans-serif;
+  background-color: black;
 }
 body{
   padding:0;

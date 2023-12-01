@@ -41,9 +41,9 @@ function App() {
     }
   }
 
-  useEffect(() => {
+  /**useEffect(() => {
     getRecipes();
-  },[]);
+  }, []);*/
 
   if(!token) {
     return(
@@ -59,7 +59,9 @@ function App() {
     return (
       <div className="App">
         <Header userName={username}/>
-        
+        {
+          getRecipes()
+        }
         <Routes>
           <Route path="/" element={<Home recipes={recipes} getRecipeData={getRecipeData} recipe={recipe} reviews={reviews} setReviews={setReviews}/>}>Home</Route>
           <Route path="/add-new-recipe" element={<AddNewRecipe/>}>Add New recipe</Route>

@@ -49,30 +49,42 @@ export default function Login({ setToken,setName }) {
   }
   return(
     <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <h3>{message}</h3>
-      <form onSubmit={handleSubmit} >
-        <label>
-          <p>Email</p>
-          <input type="text" onChange={e => setUserName(e.target.value)} value={username}/>
-        </label>
-        <br/>
-        <br/>
-        <label>
-          <p>Password</p>
-          <input type="password" onChange={e => setPassword(e.target.value)} value={password}/>
-        </label>
-        <br/>
-        <br/>
-        <div>
-          <Button variant="info" onClick={handleSubmit}>Submit</Button>
-        </div>
+      <table>
+        <tr>
+          <td>
+          <h1>Please Log In</h1>
+          <h3>{message}</h3>
+          <form onSubmit={handleSubmit} >
+            <label>
+              <p>Email</p>
+              <input type="text" onChange={e => setUserName(e.target.value)} value={username}/>
+            </label>
+            <br/>
+            <br/>
+            <label>
+              <p>Password</p>
+              <input type="password" onChange={e => setPassword(e.target.value)} value={password}/>
+            </label>
+            <br/>
+            <br/>
+            <div>
+              <Button variant="info" onClick={handleSubmit}>Submit</Button>
+            </div>
 
-      </form>
-      <br/>
-      <p>
-        New user? <Link to='/register'>Register here</Link>
-      </p>
+          </form>
+          <br/>
+          <p>
+            New user? <Link to='/register'>Register here</Link>
+          </p>
+          </td>
+          <td>
+          <div className='food-image'>
+          <img src={require("../Simple Cooking.jpg")} />
+          </div>
+          </td>
+        </tr>
+      </table>
+      
     </div>
   )
 }

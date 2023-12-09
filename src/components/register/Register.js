@@ -85,7 +85,10 @@ export default function Register() {
  
     return (
         <div className="form">
-            <div>
+            <table>
+                <tr>
+                    <td>
+                    <div>
                 <h1>User Registration</h1>
             </div>
  
@@ -119,6 +122,16 @@ export default function Register() {
                     Go back to <Link to='/login'>Login Page here</Link>
                 </p>
             </form>
+                    </td>
+                    <td>
+                    <div className='food-image'>
+                <img src={require("../Simple Cooking.jpg")} />
+            </div>
+                    </td>
+                </tr>
+            </table>
+            
+           
         </div>
     );
 }

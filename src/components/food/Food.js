@@ -24,6 +24,8 @@ const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
                     <Form.Control type="text" onChange={onTermChange} value={searchTerm}/>
                 </Form.Group>
             </Form>
+            <br/>
+            <br/>
             <Carousel autoPlay={false} height={800} indicators={false} navButtonsAlwaysVisible={true}>
                 {
                     
@@ -42,8 +44,8 @@ const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
                                             <h4>{recipe.title}</h4>
                                         </div>
                                         <div className='recipe-detail'>
-                                            <Tabs  defaultIndex={0}>
-                                                <TabList>
+                                            <Tabs defaultIndex={0}>
+                                                <TabList className={tab-headers}>
                                                 <Tab>Ingredients</Tab>
                                                 <Tab>Recipe Instructions</Tab>
                                                 <Tab>Write a Review</Tab>

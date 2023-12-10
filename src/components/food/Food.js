@@ -45,7 +45,7 @@ const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
                                         </div>
                                         <div className='recipe-detail'>
                                             <Tabs defaultIndex={0}>
-                                                <TabList className={tab-headers}>
+                                                <TabList className='tab-list'>
                                                 <Tab>Ingredients</Tab>
                                                 <Tab>Recipe Instructions</Tab>
                                                 <Tab>Write a Review</Tab>

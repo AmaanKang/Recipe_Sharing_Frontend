@@ -19,6 +19,26 @@
 .recipe-detail{
     height:100%;
 }
-.tab-headers{
-
+.tab-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
 }
+  
+.tab-list Tab {
+    cursor: pointer;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    background-color: #f0f0f0;
+  }
+  
+.tab-list li:hover {
+    background-color: #e0e0e0;
+  }
+  
+.active-tab {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+  }

@@ -15,6 +15,9 @@ const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
     const onTermChange = (e) => {
         setSearchTerm(e.target.value);
     }
+    const filteredRecipes = recipes.filter((r) =>
+        r.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div className='recipe-carousel-container'>
@@ -26,14 +29,13 @@ const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
             </Form>
             <br/>
             <br/>
-            <Carousel autoPlay={false} height={800} indicators={false} navButtonsAlwaysVisible={true}>
-                {
-                    
-                    recipes.filter((r) => {
-                        return r.title.toLowerCase().includes(searchTerm.toLowerCase());
-                    }).
-                    map((recipe) => {
-                        return(
+            {
+                filteredRecipes.length === 0 ? (
+                    <p>No recipes found for the given search term.</p>
+                ):(
+                <Carousel autoPlay={false} height={800} indicators={false} navButtonsAlwaysVisible={true}>
+                    {filteredRecipes.map((recipe) => (
+                        
                             <div key={recipe.id}>
                                 <div className='recipe-card-container'>
                                     <div className='recipe-card'>
@@ -73,10 +75,10 @@ const Food = ({recipes,getRecipeData,recipe,reviews,setReviews}) => {
                                     </div>
                                 </div>
                             </div>
-                        )
-                    })
-                }
-            </Carousel>
+                        
+                    ))}
+                </Carousel>
+            )}   
         </div>
     )
 }

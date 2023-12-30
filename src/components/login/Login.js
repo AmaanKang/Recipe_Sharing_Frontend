@@ -9,20 +9,6 @@ import {Link} from 'react-router-dom';
 import api from '../../api/axiosConfig';
 import {Button} from 'react-bootstrap';
 
-async function loginUser(credentials) {
-    /**
-     * post this to the api in the backend java, compare if the username and password exists
-     * return fetch('http://localhost:8080/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-
-      .then(dak+ta => data.json())
-      */
-   }
 
 export default function Login({ setToken,setName }) {
 
@@ -31,11 +17,15 @@ export default function Login({ setToken,setName }) {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async e => {
-    e.preventDefault();
-    const response = await api.post('api/v1/login',{
-      emailAddress:username,
-      password:password
-    });
+    
+    if (username === '' || password === '') {
+      setMessage("Email and password fields are required!");
+    } else {
+      e.preventDefault();
+      const response = await api.post('api/v1/login',{
+        emailAddress:username,
+        password:password
+      });
     if(response.data == 1){
       setName(username);
       setUserName('');
@@ -45,6 +35,7 @@ export default function Login({ setToken,setName }) {
       setToken(false);
       setMessage("Login failed!");
     }
+  }
     
   }
   return(

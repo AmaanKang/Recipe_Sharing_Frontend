@@ -47,10 +47,8 @@ export default function Register() {
             }else{
                 setMessage("An error occured, Please try again!");
             }
-            //const navigate = useNavigate();
             //setSubmitted(true);
             //setError(false);
-            //navigate(to="/");
         }
     };
  

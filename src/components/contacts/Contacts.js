@@ -1,7 +1,7 @@
 import React from 'react';
 import './Contacts.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook,faInstagram,faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook,faInstagram,faTwitter,faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Contacts = () => {
     return(
@@ -10,9 +10,10 @@ const Contacts = () => {
             <p>Email: <a href="#">amandeep@email.com</a></p>
             <p>Phone Number: <a href="#">+1-888-456-7890</a></p>
             <p>
-                <FontAwesomeIcon icon={faInstagram} />
-                <FontAwesomeIcon icon={faFacebook} />
-                <FontAwesomeIcon icon={faTwitter} />
+                <FontAwesomeIcon icon={faInstagram} style={{"padding":"2%"}} />
+                <FontAwesomeIcon icon={faFacebook} style={{"padding":"2%"}} />
+                <FontAwesomeIcon icon={faTwitter} style={{"padding":"2%"}} />
+                <FontAwesomeIcon icon={faYoutube} style={{"padding":"2%"}} />
             </p>
         </div>
     )

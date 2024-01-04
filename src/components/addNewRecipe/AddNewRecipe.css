@@ -1,3 +1,6 @@
 .recipe-form{
     padding:2% 5% 2% 5%;
 }
+.validation{
+    color: red;
+}

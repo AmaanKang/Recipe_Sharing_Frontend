@@ -44,7 +44,9 @@ export default function Login({ setToken,setName }) {
         <tr>
           <td>
           <h1>Please Log In</h1>
-          <h3>{message}</h3>
+          <div className='validation'>
+            <p>{message}</p>
+          </div>
           <form onSubmit={handleSubmit} >
             <label>
               <p>Email</p>

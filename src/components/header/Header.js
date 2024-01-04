@@ -25,7 +25,7 @@ const Header = ({userName}) => {
                         <NavLink className="nav-link" to="/add-new-recipe">Add new recipe</NavLink>
                         <NavLink className="nav-link" to="/contact">Contact</NavLink>
                     </Nav>
-                    <NavLink className="nav-link" to="/">{userName}</NavLink>
+                    <NavLink className="nav-link" to="/" style={{"color":"white"}}>{userName}</NavLink>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

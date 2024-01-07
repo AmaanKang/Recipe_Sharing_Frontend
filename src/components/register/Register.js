@@ -4,7 +4,6 @@
 
 import { useState } from 'react';
 import api from '../../api/axiosConfig';
-import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import './Register.css';
@@ -13,33 +12,25 @@ export default function Register() {
  
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
- 
-    // States for checking the errors
-    //const [submitted, setSubmitted] = useState(false);
-    //const [error, setError] = useState(false);
     const [message,setMessage] = useState("");
  
     // Handling the email change
     const handleEmail = (e) => {
         setEmail(e.target.value);
-        //setSubmitted(false);
     };
  
     // Handling the password change
     const handlePassword = (e) => {
         setPassword(e.target.value);
-        //setSubmitted(false);
     };
  
     // Handling the form submission
     const handleSubmit = async(e) => {
         e.preventDefault();
         if (email === '' || password === '') {
-            //setError(true);
             setMessage("Email and password fields are required!");
         } else {
             const response = await api.post('api/v1/users',{emailAddress:email,password:password});
-            console.log(response.data);
             if(response.data == 1){
                 setEmail('');
                 setPassword('');
@@ -47,8 +38,6 @@ export default function Register() {
             }else{
                 setMessage("An error occured, Please try again!");
             }
-            //setSubmitted(true);
-            //setError(false);
         }
     };
  

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import {Paper} from '@mui/material';
 import './Food.css';
-import { useNavigate } from 'react-router-dom';
 import {Tab,Tabs,TabList,TabPanel} from 'react-tabs';
 import Reviews from '../reviews/Reviews';
 import {Form,Button} from 'react-bootstrap';

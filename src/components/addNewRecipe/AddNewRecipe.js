@@ -2,7 +2,6 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import {Form,Button} from 'react-bootstrap';
 import api from '../../api/axiosConfig';
-import {useParams} from 'react-router-dom';
 import './AddNewRecipe.css';
 import uploadApi from '../../api/axiosFileUpload';
 
@@ -36,7 +35,7 @@ const AddNewRecipe = () => {
             e.preventDefault();
             try{
                 const response = await api.post("api/v1/recipes",{title:_title,ingredients:_ingredients,instructions:_instructions,image_Name:selectedFile.name.substring(0,selectedFile.name.length-4)});
-                console.log(response.data);
+                
                 const formData = new FormData(); 
                 formData.append(
                     "file",
@@ -45,7 +44,7 @@ const AddNewRecipe = () => {
                 );
                 const response2 = uploadApi.post("/upload", formData);
                 if(response.data != null && response2.data != null){
-                    //selectedFile = null;
+                    
                     _title = "";
                     _ingredients = "";
                     _instructions = "";

@@ -1,6 +1,5 @@
 import {useEffect,useRef} from 'react';
 import api from '../../api/axiosConfig';
-import {useParams} from 'react-router-dom';
 import {Container,Row,Col} from 'react-bootstrap';
 import ReviewForm from '../reviewForm/ReviewForm';
 
@@ -13,7 +12,6 @@ const Reviews = ({getRecipeData,recipe,reviews,setReviews,recipeId}) => {
         console.log(rev.value);
         try{
             const response = await api.post("api/v1/reviews",{reviewBody:rev.value,ID:recipeId});
-            console.log(response.data);
             const updatedReviews = [...reviews,{body:rev.value}];
             rev.value = "";
             setReviews(updatedReviews);
@@ -44,9 +42,6 @@ const Reviews = ({getRecipeData,recipe,reviews,setReviews,recipeId}) => {
                         </Col>
                     </Row>
                     </>
-                }
-                {
-                    console.log(reviews)
                 }
                 {
                     reviews?.map((r) => {
